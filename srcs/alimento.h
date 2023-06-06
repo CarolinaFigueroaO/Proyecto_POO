@@ -31,11 +31,11 @@ public:
     ~Alimento(){}
 
     //Setters de atributos
-    void setNombre(const string &nombre)    { this -> nombre = nombre; }
-    void setNombre(const int &calorias)     { this -> calorias = calorias; }
+    void setNombre(const string &nombre) { this -> nombre = nombre; }
+    void setNombre(const int &calorias) { this -> calorias = calorias; }
     // Getters de atributos
-    const string& getNombre() const         { return nombre; }
-    int getCalorias() const                 { return calorias; }
+    const string& getNombre() const { return nombre; }
+    int getCalorias() const { return calorias; }
 
 };
 

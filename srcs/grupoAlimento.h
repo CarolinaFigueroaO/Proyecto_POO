@@ -1,4 +1,4 @@
-// --- CLASE ALIMENTO ---
+// --- CLASE GRUPO ---
 // Jorge Luis Nájera Espinosa - A01424106
 // Andrea Carolina Figueroa Orihuela - A01424250
 
@@ -38,6 +38,6 @@ public:
     void setNombre(const string &nombre) { this -> nombre = nombre; }
     void agregarAlimento(const Alimento* &alimento) { alimentos.push_back(alimento); }
     //Getters
-    const string& getNombre() const     { return nombre; }
-    const vector<const Alimento*>& getAlimentos() const     { return alimentos; }
+    const string& getNombre() const { return nombre; }
+    const vector<const Alimento*>& getAlimentos() const { return alimentos; }
 };
