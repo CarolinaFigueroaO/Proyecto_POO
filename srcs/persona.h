@@ -30,8 +30,9 @@ public:
 
     //METODOS
     //Getters
-    const string& getNombre() const { return nombre; }
+    string getNombre() const { return nombre; }
     int getEdad() const { return edad; }
+    double getPeso() const { return peso; }
     //Setters
     void setNombre(const string& nombre) { this -> nombre = nombre; }
     void setEdad(const int& edad) { this -> edad = edad; }
