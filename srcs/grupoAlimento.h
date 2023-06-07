@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <string>
-#include <string>
 #include <vector>
 #include "alimento.h"
 
@@ -14,7 +13,7 @@ using namespace std;
 
 
 class Grupo {
-private:
+
     string nombre;               // Nombre del grupo
     vector<const Alimento*> alimentos;  // Alimentos que forman este alimento
 

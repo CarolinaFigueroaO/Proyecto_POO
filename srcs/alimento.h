@@ -11,7 +11,7 @@ using namespace std;
 
 
 class Alimento {
-private:
+    
     string nombre;   // Nombre del alimento
     int calorias;         // Cantidad de calorías en el alimento
 
