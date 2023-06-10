@@ -13,24 +13,29 @@ using namespace std;
 //Herencia de clase persona
 class Usuario : public Persona { 
 
-    double calorias; //Calorias consumidas por el usuario
+    double imc;
+    double calConsumidas; //Calorias consumidas por el usuario
 
 public:
     //CONSTRUCTORES
     //Constructor vacio
     Usuario () {}
     //Constructor con los tres atributos para inicializar
-    Usuario(const string& nombre, const int& edad, const double& peso,const double& calorias)
-        : Persona(nombre, edad, peso), calorias(calorias) {}
+    Usuario(const string& nombre, const int& edad, const double& peso, const double& estatura, double& calConsumidas)
+        : Persona(nombre, edad, peso, estatura), calConsumidas(calConsumidas) {}
     //Constructor copia
     Usuario(const Usuario& otro)
-        : Persona(otro.getNombre(), otro.getEdad(), otro.getPeso()), calorias(otro.calorias) {}
+        : Persona(otro.getNombre(), otro.getEdad(), otro.getPeso(), otro.getEstatura()), calConsumidas(calConsumidas) {}
     //Destructor
     ~Usuario(){}
 
     //METODOS
     //Getters
-    double getCalorias() const { return calorias; }
+    double getCalorias() const { return calConsumidas; }
     //Setters
-    void setCalorias(const double& calorias) { this -> calorias = calorias; }
+    void setCalorias(const double& calConsumidas) { this -> calConsumidas = calConsumidas; }
+    void calcularIMC()
+    {
+        
+    }
 };
