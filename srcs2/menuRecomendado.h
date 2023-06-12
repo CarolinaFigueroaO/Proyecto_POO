@@ -22,7 +22,6 @@ class MenuRecomendado {
         MenuRecomendado(Usuario& usuario)
         {
             catalogo.crearGrupos();
-            cout << "IMC: " << usuario.calcularIMC() << endl;
             // imc < 18.5 = Peso bajo
             // 18.5 < imc < 25 = Peso saludable
             // imc > 25 = Sobrepeso
