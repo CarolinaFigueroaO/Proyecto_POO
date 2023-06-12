@@ -20,8 +20,8 @@ public:
     //Constructor vacio
     Alimento() {} 
     // Constructor que inicializa todos los atributos
-    Alimento(const string& nombre, double calorias, double gramos)  
-            : nombre(nombre),  calorias(calorias), gramos(gramos) {}
+    Alimento(const string& nombre, double gramos, double calorias)  
+            : nombre(nombre), gramos(gramos), calorias(calorias) {}
     //Constructor copia
     //Alimento(Alimento &otro) 
             //: nombre(otro.nombre), calorias(otro.calorias) {}

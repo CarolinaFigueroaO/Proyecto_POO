@@ -7,8 +7,11 @@ using namespace std;
 
 int main(){
 
-    Usuario carolina("Carolina", 19, 45, 1.56);
-    MenuRecomendado recomendacion(carolina);
-
+    Usuario carolina("Carolina", 19, 44, 1.56);
+    MenuRecomendado uno(carolina);
+    MenuRecomendado dos(carolina);
+    MenuRecomendado tres(carolina);
+    MenuRecomendado cuatro(carolina);
+    carolina.generarReporte();
     return 0;
 }
