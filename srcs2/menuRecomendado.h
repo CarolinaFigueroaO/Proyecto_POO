@@ -16,8 +16,9 @@ using namespace std;
 class MenuRecomendado {
     Catalogo catalogo;
     vector <Alimento> menu;
-    string paraUsuario;
+    string horaFecha;
     double caloriasTotales = 0.0;
+
     public:
         MenuRecomendado() {}
         MenuRecomendado(Usuario&);
@@ -37,13 +38,29 @@ class MenuRecomendado {
         }
     }
 
+   string getFecha(){  return horaFecha; }
+
+        friend std::ostream& operator<<(std::ostream& os, const MenuRecomendado& menu) 
+        {
+
+                os << "Fecha: " << menu.horaFecha << endl;
+                for (auto alimento : menu.menu) 
+                {
+                        os << alimento;
+                }
+                return os;
+        }
 
 };
 
 MenuRecomendado::MenuRecomendado(Usuario& usuario)
 {
-            paraUsuario = usuario.nombre;
-            cout << "Menu recomendado para " << paraUsuario << ", cargando..." << endl;
+            time_t now = std::time(0);
+            tm* localTime = std::localtime(&now);
+            char buffer[80];
+            strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", localTime);
+            horaFecha = buffer;
+            cout << horaFecha << endl;
             catalogo.cargarCatalogo();
             if (usuario.imc < 18.5)
             {

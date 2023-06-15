@@ -14,7 +14,7 @@ class App
     int edad;
     double peso;
     double estatura;
-
+    vector<MenuRecomendado> historial;
     public:
         App(){}
         App(const Usuario& usuario){ }
@@ -34,21 +34,28 @@ class App
                 cin >> estatura;
                 usuarioRegistrado = new Usuario(nombre, edad, peso, estatura);
                 cout << "Ingrese una opcion:" << endl;
-                cout << "D: reporte del dia \nS: reporte semanal \nI: info de usuario \nC: catalogo de alimentos \nM: generar nuevo menu recomendado" << endl;
+                cout << "D: reporte del dia \nS: reporte semanal \nI: info de usuario \nC: catalogo de alimentos \nM: generar nueva comida recomendada" << endl;
                 cin >> opcionMenu;
- 
             }
+
         }
-        void reporteDiario(){
-            //Generar 4 comidas del dia
-            for (size_t i = 0; i < 4; i++)
-            {
-                MenuRecomendado(usuarioRegistrado);
-            }
+        void generarNuevaComida(){
+            //Generar 1 comida
+            MenuRecomendado(usuarioRegistrado);
+        }
+        void historialDia(){
+
         }
 };
 int main(){
-    App aplicacion;
+    /*
+        App aplicacion;
     aplicacion.start();
+    */
+
+   Usuario carolina("Caro", 19,55,1.57);
+   cout << carolina;
+   //MenuRecomendado menu(carolina);
+   //cout << menu << endl;
     return 0;
 }
