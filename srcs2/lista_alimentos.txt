@@ -1,0 +1,39 @@
+Res 100 250
+Salmon 100 206
+Huevos 100 155
+Pollo 100 165
+Atun 100 130
+Camarones 100 99
+Proteinas
+
+Avena 50 190
+Pan 100 150
+Pasta 70 100
+Arroz 70 90
+Maiz 50 43
+Patatas 50 38
+Carbohidratos
+
+Platano 50 48
+Pera 50 28
+Manzana 50 2
+Pinia 50 25
+Naranja 50 22
+Fresas 50 16
+Frutas
+
+Zanahoria 50 20
+Brocoli 50 17
+Pimiento 50 13
+Espinaca 50 12
+Tomate 50 9
+Calabacin 50 8
+Verduras
+
+Helado 150 310
+Mantequilla 20 140
+Queso 30 120
+Crema 30 100
+Leche 100 61
+Yogur 100 59
+Lacteos

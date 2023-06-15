@@ -20,11 +20,9 @@ public:
     //Constructor vacio
     Alimento() {} 
     // Constructor que inicializa todos los atributos
-    Alimento(const string& nombre, double gramos, double calorias)  
-            : nombre(nombre), gramos(gramos), calorias(calorias) {}
+    Alimento(const string& nombre, const double& gramos, const double& calorias)  : nombre(nombre), gramos(gramos), calorias(calorias) {}
     //Constructor copia
-    //Alimento(Alimento &otro) 
-            //: nombre(otro.nombre), calorias(otro.calorias) {}
+    Alimento(const Alimento &otro) : nombre(otro.nombre), gramos(otro.gramos), calorias(otro.calorias) {}
     //Destructor
     ~Alimento(){}
 
@@ -34,10 +32,11 @@ public:
     // Getters de atributos
     const string& getNombre() const { return nombre; }
     double getCalorias() const { return calorias; }
-    
-    void imprimeAlimento();
+    double getGramos() const { return gramos; }
+
+    friend std::ostream& operator<<(std::ostream& os, const Alimento& alimento) {
+        os << "\t" << alimento.getNombre()  << "\t\t" << alimento.getGramos()<< "\t" << alimento.getCalorias() << endl;
+        return os;
+    }
 };
 
-void Alimento::imprimeAlimento(){
-    cout << "\t" << nombre  << ", gramos: " << gramos << ", calorias: " << calorias << endl;
-}

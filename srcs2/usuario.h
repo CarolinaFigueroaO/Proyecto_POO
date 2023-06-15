@@ -15,7 +15,6 @@ using namespace std;
 class Usuario : public Persona { 
 
     double calConsumidas; //Calorias consumidas por el usuario
-
 public:
     double imc;
 
@@ -23,7 +22,10 @@ public:
     //Constructor vacio
     Usuario () : calConsumidas(0.0) {}
     //Constructor con los tres atributos para inicializar
-    Usuario(const string& nombre, const int& edad, const double& peso, const double& estatura) : Persona(nombre, edad, peso, estatura), calConsumidas(0.0) {}
+    Usuario(const string& nombre, const int& edad, const double& peso, const double& estatura) : Persona(nombre, edad, peso, estatura), calConsumidas(0.0) 
+    {        
+        imc = peso/pow(estatura, 2);
+    }
    //Constructor copia
     Usuario(const Usuario& otro) : Persona(otro.getNombre(), otro.getEdad(), otro.getPeso(), otro.getEstatura()), calConsumidas(otro.calConsumidas) {}
     //Destructor
@@ -34,19 +36,15 @@ public:
     double getCalorias() { return calConsumidas; }
     //Setters
     void actualizarCalorias(const double& _calConsumidas) { calConsumidas += _calConsumidas; }
-    int calcularIMC()
-    {
-        imc = peso/pow(estatura, 2);
-        return imc;
-    }
 
-    void generarReporte(){
-        cout << "--- Reporte del Usuario ---" << endl;
-        cout << "Nombre: " << getNombre() << endl;
-        cout << "Edad: " << getEdad() << endl;
-        cout << "Estatura: " << getEstatura() << " m" << endl;
-        cout << "IMC: " << calcularIMC() << endl;
-        cout << "Calorias consumidas hoy: " << calConsumidas << endl;
-    }
 
+    friend std::ostream& operator<<(std::ostream& os, const Usuario& usuario) {
+        os << "--- INFO DEL USUARIO ---" << endl;
+        os << "Nombre: " << usuario.getNombre() << endl;
+        os << "Edad: " << usuario.getEdad() << endl;
+        os << "Estatura: " << usuario.getEstatura() << " m" << endl;
+        os << "IMC: " << usuario.imc << endl;
+        os << "Calorias consumidas hoy: " << usuario.calConsumidas << endl;
+        return os;
+    }
 };
