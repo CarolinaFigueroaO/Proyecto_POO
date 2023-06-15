@@ -8,38 +8,47 @@ using namespace std;
 
 class App
 {
-    vector<Usuario> usuarios;
     char opcionMenu;
-    string nombreUsuario;
+    Usuario* usuarioRegistrado;
+    string nombre;
+    int edad;
+    double peso;
+    double estatura;
+
     public:
         App(){}
-        App(const Usuario& usuario){ usuarios.push_back(usuario); }
+        App(const Usuario& usuario){ }
         ~App(){}
 
         void start(){
             cout << "===== BIENVENIDO =====" << endl;
             while(opcionMenu!= 'E')
             {
-                cout << "Ingrese su nombre de usuario: " << endl;
-                cin >> nombreUsuario;
-                for(auto usuario: usuarios){
-                    if(usuario.getNombre() != nombreUsuario)
-                    {
-                        cout << "Debe registrar sus datos primero" << endl;
-                    }
-                }
-                cout << "Bienvenido de vuelta" << endl;
+                cout << "Ingrese su nombre: " << endl;
+                cin >> nombre;
+                cout << "Ingrese su edad: " << endl;
+                cin >> edad;
+                cout << "Ingrese su peso: " << endl;
+                cin >> peso;
+                cout << "Ingrese su estatura: " << endl;
+                cin >> estatura;
+                usuarioRegistrado = new Usuario(nombre, edad, peso, estatura);
                 cout << "Ingrese una opcion:" << endl;
                 cout << "D: reporte del dia \nS: reporte semanal \nI: info de usuario \nC: catalogo de alimentos \nM: generar nuevo menu recomendado" << endl;
                 cin >> opcionMenu;
  
             }
         }
+        void reporteDiario(){
+            //Generar 4 comidas del dia
+            for (size_t i = 0; i < 4; i++)
+            {
+                MenuRecomendado(usuarioRegistrado);
+            }
+        }
 };
 int main(){
-    
-    cout << "===== BIENVENIDO =====" << endl;
-    Usuario caro("a", 15, 68, 1.70);
-    MenuRecomendado menu(caro);
+    App aplicacion;
+    aplicacion.start();
     return 0;
 }
