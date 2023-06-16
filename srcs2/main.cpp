@@ -39,7 +39,7 @@ int main(){
 
 
 void App::start(){
-    cout << "======= BIENVENIDO =======" << endl;
+    cout << "------------ BIENVENIDO ------------" << endl;
     cout << "Ingrese su nombre: " << endl;
     cin >> nombre;
     cout << "Ingrese su edad: " << endl;
@@ -50,7 +50,6 @@ void App::start(){
     cin >> estatura;
     usuarioRegistrado = new Usuario(nombre, edad, peso, estatura);
 
-    bool salir = false;
     do {
         cout << "Ingrese una opcion:" << endl;
         cout << "M: generar una comida recomendada \nD: generar comidas recomendadas del dia (4 comidas) \nH: Reporte del historial de hoy \nI: info de usuario \nC: catalogo de alimentos  \nQ: salir" << endl;
@@ -70,7 +69,7 @@ void App::start(){
             break;  // Salir del bucle si se ingresa 'Q'
         }
         else {
-            cout << "¡Opcion invalida!. Por favor, ingrese una opción valida." << endl;
+            cout << "Opcion invalida!. Por favor, ingrese una opcion valida." << endl;
         }
     } while (true);
 }
@@ -78,7 +77,7 @@ void App::start(){
 
 void App::generarComida(){
     if(historial.size()>= 4) {
-        cout << "¡Limite de comidas generadas alcanzado!" << endl;
+        cout << "Limite de comidas generadas alcanzado!" << endl;
     } else{
         MenuRecomendado menu(*usuarioRegistrado);
         historial.push_back(menu);
@@ -86,12 +85,13 @@ void App::generarComida(){
 
 }
 void App::historialDia(){
-    cout << "Menus generados hoy" << endl;
+    cout << "-------- Menus generados hoy --------" << endl;
     //Mostrar historial del dia
     for (auto menus: historial)
     {
         cout << menus;
     }
+    cout << "------------------------------------" << endl;
 }
 
 void App::catalogoAlimentos(){
@@ -115,7 +115,7 @@ void App::catalogoAlimentos(){
 void App::comidasDia()
 {
     if(historial.size()>= 4) {
-        cout << "¡Limite de comidas generadas alcanzado!" << endl;
+        cout << "Limite de comidas generadas alcanzado!" << endl;
     } else{
         int lim = 4 - historial.size();
         for (size_t i = 0; i < lim; i++)
@@ -124,7 +124,7 @@ void App::comidasDia()
             historial.push_back(menu);
         }
         if(historial.size()>= 4) {
-        cout << "¡Limite de comidas generadas alcanzado!" << endl;
+        cout << "Limite de comidas generadas alcanzado!" << endl;
         }
     }
 }
