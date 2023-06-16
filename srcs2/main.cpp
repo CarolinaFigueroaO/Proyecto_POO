@@ -15,6 +15,7 @@ class App
     double peso;
     double estatura;
     vector<MenuRecomendado> historial;
+    Catalogo catalogo;
     public:
         App(){}
         App(const Usuario& usuario){ }
@@ -37,14 +38,62 @@ class App
                 cout << "D: reporte del dia \nS: reporte semanal \nI: info de usuario \nC: catalogo de alimentos \nM: generar nueva comida recomendada" << endl;
                 cin >> opcionMenu;
             }
-
+        if(opcionMenu=='D')
+        {
+            historialDia();
         }
+        else if(opcionMenu=='S')
+        {
+            historialSemana();
+        }
+        else if(opcionMenu=='I')
+        {
+            infoUsuario();
+        }
+        else if(opcionMenu=='C')
+        {
+            catalogoAlimentos(catalogo);
+        }
+        else if(opcionMenu=='M')
+        {
+            generarNuevaComida();
+        }
+        }
+
+        
         void generarNuevaComida(){
             //Generar 1 comida
             MenuRecomendado(usuarioRegistrado);
         }
-        void historialDia(){
+        void infoUsuario(){
+            //Mostrar info del usuario
+            cout << usuarioRegistrado;
+        }
 
+        void catalogoAlimentos(Catalogo catalogo){
+            //Mostrar catalogo de alimentos
+            try
+            {
+                if(catalogo.getCatalago().empty())
+                {
+                    throw runtime_error("El catalogo esta vacio");
+                }
+                catalogo.mostrarCatalogo();
+            }
+            catch(const std::exception& e)
+            {
+                std::cerr << e.what() << '\n';
+            }
+        }
+
+        void historialSemana(){
+            //Mostrar historial de la semana
+            cout << "Historial de la semana" << endl;
+        }
+        void historialDia()
+        {
+            //Mostrar historial del dia
+            cout << "Historial del dia" << endl;
         }
 };
 int main(){
