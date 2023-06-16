@@ -21,7 +21,7 @@ public:
     //CONSTRUCTORES
     //Constructor vacio
     Usuario () : calConsumidas(0.0) {}
-    //Constructor con los tres atributos para inicializar
+    //Constructor con los tres atributos para inicializar y determinar el imc
     Usuario(const string& nombre, const int& edad, const double& peso, const double& estatura) : Persona(nombre, edad, peso, estatura), calConsumidas(0.0) 
     {        
         imc = peso/pow(estatura, 2);
@@ -37,7 +37,7 @@ public:
     //Setters
     void actualizarCalorias(const double& _calConsumidas) { calConsumidas += _calConsumidas; }
 
-
+    //Sobrecarga del operador << para la impresion de los atributos del usuario
     friend std::ostream& operator<<(std::ostream& os, const Usuario& usuario) {
         os << "--- INFO DEL USUARIO ---" << endl;
         os << "Nombre: " << usuario.getNombre() << endl;

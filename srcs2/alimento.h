@@ -34,6 +34,7 @@ public:
     double getCalorias() const { return calorias; }
     double getGramos() const { return gramos; }
 
+    //Sobrecarga del operador << para la impresion de los atributos del alimento
     friend std::ostream& operator<<(std::ostream& os, const Alimento& alimento) {
         os << "\t" << alimento.getNombre()  << "\t\t" << alimento.getGramos()<< "\t" << alimento.getCalorias() << endl;
         return os;

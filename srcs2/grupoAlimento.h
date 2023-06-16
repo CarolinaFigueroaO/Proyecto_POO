@@ -15,7 +15,7 @@ using namespace std;
 class Grupo {
 
     string nombre;               // Nombre del grupo
-    vector<Alimento> alimentos;  // Alimentos que forman este alimento
+    vector<Alimento> alimentos;  // Alimentos que forman este grupo
 
 public:
         // CONSTRUCTORES
@@ -35,7 +35,9 @@ public:
 
         //Setters
         void setNombre(const string &nombre) { this -> nombre = nombre; }
-        void agregarAlimento(const Alimento& alimento) { alimentos.push_back(alimento); }    //Getters
+        //Agregar alimentos individuales al grupo
+        void agregarAlimento(const Alimento& alimento) { alimentos.push_back(alimento); }    
+        //Getters
         const string& getNombre() const { return nombre; }
         const vector<Alimento> getAlimentos() const { return alimentos; }
 

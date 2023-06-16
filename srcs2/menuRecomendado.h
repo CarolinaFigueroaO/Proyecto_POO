@@ -14,16 +14,16 @@ using namespace std;
 
 
 class MenuRecomendado {
-    Catalogo catalogo;
-    vector <Alimento> menu;
-    string horaFecha;
-    double caloriasTotales = 0.0;
+    Catalogo catalogo; //Creamos un objeto catalogo para poder recomendar comidas
+    vector <Alimento> menu; //Vector de los alimentos recomendados
+    string horaFecha; //Atributo para hora y fecha del menu
+    double caloriasTotales = 0.0; //Calorias totales iniciales antes de recomendar alimentos
 
     public:
         MenuRecomendado() {}
-        MenuRecomendado(Usuario&);
+        MenuRecomendado(Usuario&); //Construimos un menu recomendado recibiendo un usuario
 
-    int variedadMenu(int num1, int num2)
+    int variedadMenu(int num1, int num2) //Metodo para darle variedad a los menus recomendados
     {
         static bool isSeeded = false; // Variable  para verificar si la semilla ya ha sido generada
         if (!isSeeded) {
@@ -38,31 +38,34 @@ class MenuRecomendado {
         }
     }
 
-    string getFecha(){  return horaFecha; }
+    string getFecha(){  return horaFecha; } //Getter de fecha y hora
 
-        friend std::ostream& operator<<(std::ostream& os, const MenuRecomendado& menu) 
+
+    //Sobrecarga del operador << para la impresion de los atributos del menu recomendado
+    friend std::ostream& operator<<(std::ostream& os, const MenuRecomendado& menu) 
+    {
+        os << "Fecha: " << menu.horaFecha << endl;
+        for (auto alimento : menu.menu) 
         {
-
-                os << "Fecha: " << menu.horaFecha << endl;
-                for (auto alimento : menu.menu) 
-                {
-                        os << alimento;
-                }
-                return os;
+                os << alimento;
         }
+        return os;
+    }
 
 };
 
+
+//Estructura del constructor menu recomendado a partir de un usuario
 MenuRecomendado::MenuRecomendado(Usuario& usuario)
 {
             time_t now = std::time(0);
-            tm* localTime = std::localtime(&now);
+            tm* localTime = std::localtime(&now); // Guardamos la hora de creacion del menu
             char buffer[80];
             strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", localTime);
             horaFecha = buffer;
             cout << "Fecha: " << horaFecha << endl;
             catalogo.cargarCatalogo();
-            if (usuario.imc < 18.5)
+            if (usuario.imc < 18.5) //Ofrecemos opciones distintas a partir del imc del usuario
             {
                 cout << "Tu indice de masa es bajo, te recomendamos un consumo de altas calorias" << endl;
                 cout << "\tAlimento\tGramos\tCalorias" << endl;
@@ -104,5 +107,5 @@ MenuRecomendado::MenuRecomendado(Usuario& usuario)
                 }
                 cout << "Calorias totales de comida sugerida: " << caloriasTotales << endl;
             }
-            usuario.actualizarCalorias(caloriasTotales);
+            usuario.actualizarCalorias(caloriasTotales); //Registramos las calorias de los menus en el usuario
 }

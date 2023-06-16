@@ -6,17 +6,17 @@
 
 using namespace std;
 
-
+//Clase App que estructura el proceso de la aplicacion
 class App
 {
-    char opcionMenu;
-    Usuario* usuarioRegistrado;
-    string nombre;
+    char opcionMenu; //Opcion de menu que eligira el usuario
+    Usuario* usuarioRegistrado; //Usuario que se registrara
+    string nombre; //Atributos para almacenar en usuario
     int edad;
     double peso;
     double estatura;
-    vector<MenuRecomendado> historial;
-    Catalogo catalogo;
+    vector<MenuRecomendado> historial; //Vector para el historial del usuario
+    Catalogo catalogo; //Catalogo ofrecido
     public:
         App(){}
         App(const Usuario& usuario){ }
@@ -30,8 +30,8 @@ class App
 };
 
 int main(){
-    App aplicacion;
-    aplicacion.start();
+    App aplicacion; //Creacion de aplicacion
+    aplicacion.start(); //Ejecucion de aplicacion
     return 0;
 }
 
@@ -39,6 +39,7 @@ int main(){
 
 
 void App::start(){
+    //Bienvenida y registro de usuario
     cout << "------------ BIENVENIDO ------------" << endl;
     cout << "Ingrese su nombre: " << endl;
     cin >> nombre;
@@ -48,12 +49,13 @@ void App::start(){
     cin >> peso;
     cout << "Ingrese su estatura: " << endl;
     cin >> estatura;
-    usuarioRegistrado = new Usuario(nombre, edad, peso, estatura);
-
+    usuarioRegistrado = new Usuario(nombre, edad, peso, estatura); //Registramos al usuario
+    //Bucle del menu de opciones para mostrar distintos reportes
     do {
         cout << "Ingrese una opcion:" << endl;
         cout << "M: generar una comida recomendada \nD: generar comidas recomendadas del dia (4 comidas) \nH: Historial de comidas generadas hoy \nI: info de usuario \nC: catalogo de alimentos  \nQ: salir" << endl;
         cin >> opcionMenu;
+        //Llamamos los metodos para cada opcion de menu
         if(opcionMenu == 'M') {
             generarComida();
         }
@@ -69,61 +71,60 @@ void App::start(){
             break;  // Salir del bucle si se ingresa 'Q'
         }
         else {
-            cout << "Opcion invalida!. Por favor, ingrese una opcion valida." << endl;
+            cout << "Opcion invalida!. Por favor, ingrese una opcion valida." << endl; //En caso de que no se tener la opcion ingresada
         }
     } while (true);
 }
 
 
-void App::generarComida(){
-    if(historial.size()>= 4) {
+void App::generarComida(){ 
+    if(historial.size()>= 4) { //Comprobamos que el usuario no haya rebasado el limite de comidas generadas
         cout << "Limite de comidas generadas alcanzado!" << endl;
     } else{
-        MenuRecomendado menu(*usuarioRegistrado);
-        historial.push_back(menu);
+        MenuRecomendado menu(*usuarioRegistrado); //Generamos una recomendacion para el usuario registrado
+        historial.push_back(menu); //Guardamos la recomendacion en el historial
     }
 
 }
 void App::historialDia(){
     cout << "-------- Menus generados hoy --------" << endl;
     //Mostrar historial del dia
-    for (auto menus: historial)
+    for (auto menus: historial) //Recorremos los objetos del historial
     {
-        cout << menus;
+        cout << menus; //Mostramos los menus con la sobrecarga de <<
     }
     cout << "------------------------------------" << endl;
 }
 
 void App::catalogoAlimentos(){
     //Mostrar y verificar que no hayas problemas en el catalogo
-    Catalogo catalogoDisponible;
-    catalogoDisponible.cargarCatalogo();
-    try
+    catalogo.cargarCatalogo(); //Cargamos los alimentos al catalogo (desde el archivo)
+    try //Se intenta realizar lo siguiente para detectar errores
     {
-        if(catalogoDisponible.getCatalago().empty())
+        if(catalogo.getCatalago().empty()) //Si el catalogo esta vacio arrojara una excepcion
         {
             throw runtime_error("El catalogo esta vacio");
         }
-        catalogoDisponible.mostrarCatalogo();
+        catalogo.mostrarCatalogo(); //Si no hay excepcion, muestra el catalogo
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << e.what() << '\n'; //Muestra la excepcion detectada
     }
 }
 
 void App::comidasDia()
 {
-    if(historial.size()>= 4) {
+    if(historial.size()>= 4) { //Verifica que el usuario no haya rebasado el limite de comidas generadas
         cout << "Limite de comidas generadas alcanzado!" << endl;
     } else{
-        int lim = 4 - historial.size();
-        for (size_t i = 0; i < lim; i++)
+        int lim = 4 - historial.size(); //Calculo cuantas comidas le faltan para alcanzar el limite
+        for (size_t i = 0; i < lim; i++) //Genera las comidas faltantes del dia
         {
-            MenuRecomendado menu(*usuarioRegistrado);
-            historial.push_back(menu);
+            MenuRecomendado menu(*usuarioRegistrado); //Recomedaciones apartir del usuario registrado
+            historial.push_back(menu); //Guarda las recomendaciones en el historial
         }
-        if(historial.size()>= 4) {
+        if(historial.size()>= 4) { //Vuelve a verificar sino a alcanzado el limite de comidas generadas
         cout << "Limite de comidas generadas alcanzado!" << endl;
         }
     }
