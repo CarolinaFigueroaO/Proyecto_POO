@@ -38,7 +38,7 @@ class MenuRecomendado {
         }
     }
 
-   string getFecha(){  return horaFecha; }
+    string getFecha(){  return horaFecha; }
 
         friend std::ostream& operator<<(std::ostream& os, const MenuRecomendado& menu) 
         {
@@ -60,7 +60,7 @@ MenuRecomendado::MenuRecomendado(Usuario& usuario)
             char buffer[80];
             strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", localTime);
             horaFecha = buffer;
-            cout << horaFecha << endl;
+            cout << "Fecha: " << horaFecha << endl;
             catalogo.cargarCatalogo();
             if (usuario.imc < 18.5)
             {
