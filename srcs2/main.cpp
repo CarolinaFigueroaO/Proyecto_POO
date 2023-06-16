@@ -52,7 +52,7 @@ void App::start(){
 
     do {
         cout << "Ingrese una opcion:" << endl;
-        cout << "M: generar una comida recomendada \nD: generar comidas recomendadas del dia (4 comidas) \nH: Reporte del historial de hoy \nI: info de usuario \nC: catalogo de alimentos  \nQ: salir" << endl;
+        cout << "M: generar una comida recomendada \nD: generar comidas recomendadas del dia (4 comidas) \nH: Historial de comidas generadas hoy \nI: info de usuario \nC: catalogo de alimentos  \nQ: salir" << endl;
         cin >> opcionMenu;
         if(opcionMenu == 'M') {
             generarComida();
