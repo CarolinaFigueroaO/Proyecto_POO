@@ -43,6 +43,7 @@ public:
         os << "Nombre: " << usuario.getNombre() << endl;
         os << "Edad: " << usuario.getEdad() << endl;
         os << "Estatura: " << usuario.getEstatura() << " m" << endl;
+        os << "Peso: " << usuario.getPeso() << " kg" << endl;
         os << "IMC: " << usuario.imc << endl;
         os << "Calorias consumidas hoy: " << usuario.calConsumidas << endl;
         return os;

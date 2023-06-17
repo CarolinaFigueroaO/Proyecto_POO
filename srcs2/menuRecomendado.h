@@ -23,7 +23,7 @@ class MenuRecomendado {
         MenuRecomendado() {}
         MenuRecomendado(Usuario&); //Construimos un menu recomendado recibiendo un usuario
 
-    int variedadMenu(int num1, int num2) //Metodo para darle variedad a los menus recomendados
+    int variedadMenu(const int& num1, const int& num2) //Metodo para darle variedad a los menus recomendados
     {
         static bool isSeeded = false; // Variable  para verificar si la semilla ya ha sido generada
         if (!isSeeded) {
@@ -68,7 +68,7 @@ MenuRecomendado::MenuRecomendado(Usuario& usuario)
             if (usuario.imc < 18.5) //Ofrecemos opciones distintas a partir del imc del usuario
             {
                 cout << "Tu indice de masa es bajo, te recomendamos un consumo de altas calorias" << endl;
-                cout << "\tAlimento\tGramos\tCalorias" << endl;
+                cout << "\tAlimento - Gramos - Calorias" << endl;
                 for (int i = 0; i < 5; i++)
                 {
                     Grupo altasCalorias = catalogo.getCatalago()[i];  // Accede a cada grupo del catalogo
@@ -82,7 +82,7 @@ MenuRecomendado::MenuRecomendado(Usuario& usuario)
             else if (usuario.imc> 18.5 && usuario.imc < 25)
             {
                 cout << "Tu indice de masa es saludable, te recomendamos un consumo de medias calorias" << endl;
-                cout << "\tAlimento\tGramos\tCalorias" << endl;
+                cout << "\tAlimento - Gramos - Calorias" << endl;
                 for (int i = 0; i < 5; i++)
                 {
                     Grupo mediasCalorias = catalogo.getCatalago()[i];  // Accede a cada grupo del catalogo
@@ -96,7 +96,7 @@ MenuRecomendado::MenuRecomendado(Usuario& usuario)
             else if (usuario.imc > 25)
             {
                 cout << "Tu indice de masa es alto, te recomendamos un consumo de bajas calorias" << endl;
-                cout << "\tAlimento\tGramos\tCalorias" << endl;
+                cout << "\tAlimento - Gramos - Calorias" << endl;
                 for (int i = 0; i < 5; i++)
                 {
                     Grupo bajasCalorias = catalogo.getCatalago()[i]; // Accede a cada grupo del catalogo

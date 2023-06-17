@@ -36,7 +36,7 @@ public:
 
     //Sobrecarga del operador << para la impresion de los atributos del alimento
     friend std::ostream& operator<<(std::ostream& os, const Alimento& alimento) {
-        os << "\t" << alimento.getNombre()  << "\t\t" << alimento.getGramos()<< "\t" << alimento.getCalorias() << endl;
+        os << "\t" << alimento.getNombre()  << " - " << alimento.getGramos()<< " - " << alimento.getCalorias() << endl;
         return os;
     }
 };

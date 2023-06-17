@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <limits>
 #include "usuario.h"
 #include "menuRecomendado.h"
 
@@ -45,25 +46,41 @@ int main(){
 void App::start(){
     //Bienvenida y registro de usuario
     cout << "------------ BIENVENIDO ------------" << endl;
-    cout << "Podras generar 4 comidas recomendadas de acuerdo a tu IMC" << endl;
+    cout << "Podras generar 4 comidas recomendadas de acuerdo a tu IMC." << endl;
+    cout << "Ingrese datos reales o realistas para el correcto funcionamiento de la app, \nsino se le pedira ingresar los datos nuevamente" << endl;
     cout << "Ingrese su nombre: " << endl;
     cin >> nombre;
     do
     {
         cout << "Ingrese su edad (10 - 100): " << endl;
         cin >> edad;
+        if (cin.fail()) { //Verificamos que ingrese el tipo de dato correcto
+            cout << "Error: Ingrese un numero valido." << endl;
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
     } while (edad < 10 || edad > 100); //Verificamos datos realistas
 
     do
     {
         cout << "Ingrese su peso (kg): " << endl;
         cin >> peso;
-    } while (peso < 30 || peso > 200); //Verificamos datos realistas
+        if (cin.fail()) { //Verificamos que ingrese el tipo de dato correcto
+            cout << "Error: Ingrese un numero valido." << endl;
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    } while (peso < 30 || peso > 200 || cin.fail()); //Verificamos datos realistas
     
     do
     {
         cout << "Ingrese su estatura (m): " << endl;
         cin >> estatura;
+        if (cin.fail()) { //Verificamos que ingrese el tipo de dato correcto
+            cout << "Error: Ingrese un numero valido." << endl;
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
     } while (estatura < 1 || estatura > 2.40); //Verificamos datos realistas
 
     usuarioRegistrado = new Usuario(nombre, edad, peso, estatura); //Registramos al usuario
@@ -105,6 +122,7 @@ void App::generarComida(){
 }
 void App::historialDia(){
     cout << "-------- Menus generados hoy --------" << endl;
+    if (historial.size() == 0){ cout << "No se han generado menus aun" << endl; }
     //Mostrar historial del dia
     for (auto menus: historial) //Recorremos los objetos del historial
     {

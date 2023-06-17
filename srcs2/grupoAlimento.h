@@ -45,6 +45,7 @@ public:
         friend std::ostream& operator<<(std::ostream& os, const Grupo& grupo) 
         {
                 os << "Grupo: " << grupo.getNombre() << endl;
+                cout << "\tAlimento - Gramos - Calorias" << endl;
                 for (auto alimento : grupo.getAlimentos()) 
                 {
                         os << alimento;
