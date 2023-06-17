@@ -1,10 +1,12 @@
+// --- CLASE CATALOGO ---
+// Jorge Luis Nájera Espinosa - A01424106
+// Andrea Carolina Figueroa Orihuela - A01424250
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include <fstream>
 #include "grupoAlimento.h"
-
-
 
 using namespace std;
 

@@ -1,3 +1,7 @@
+// --- CLASE APP y MAIN DE EJECUCION ---
+// Jorge Luis Nájera Espinosa - A01424106
+// Andrea Carolina Figueroa Orihuela - A01424250
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -41,14 +45,27 @@ int main(){
 void App::start(){
     //Bienvenida y registro de usuario
     cout << "------------ BIENVENIDO ------------" << endl;
+    cout << "Podras generar 4 comidas recomendadas de acuerdo a tu IMC" << endl;
     cout << "Ingrese su nombre: " << endl;
     cin >> nombre;
-    cout << "Ingrese su edad: " << endl;
-    cin >> edad;
-    cout << "Ingrese su peso: " << endl;
-    cin >> peso;
-    cout << "Ingrese su estatura: " << endl;
-    cin >> estatura;
+    do
+    {
+        cout << "Ingrese su edad (10 - 100): " << endl;
+        cin >> edad;
+    } while (edad < 10 || edad > 100); //Verificamos datos realistas
+
+    do
+    {
+        cout << "Ingrese su peso (kg): " << endl;
+        cin >> peso;
+    } while (peso < 30 || peso > 200); //Verificamos datos realistas
+    
+    do
+    {
+        cout << "Ingrese su estatura (m): " << endl;
+        cin >> estatura;
+    } while (estatura < 1 || estatura > 2.40); //Verificamos datos realistas
+
     usuarioRegistrado = new Usuario(nombre, edad, peso, estatura); //Registramos al usuario
     //Bucle del menu de opciones para mostrar distintos reportes
     do {
